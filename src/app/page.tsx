@@ -327,7 +327,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4"
           >
             {[
               { name: "Cisco", domain: "cisco.com" },
@@ -346,13 +346,9 @@ export default function Home() {
             ].map((brand, index) => (
               <div 
                 key={index}
-                className="flex flex-col items-center justify-center"
+                className="flex items-center justify-center px-4 py-3 bg-gray-50 rounded-lg hover:bg-[#ec682b]/10 hover:text-[#ec682b] transition-all duration-300 cursor-default"
               >
-                <img 
-                  src={`https://logo.clearbit.com/${brand.domain}`}
-                  alt={brand.name}
-                  className="w-16 h-16 md:w-20 md:h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                />
+                <span className="font-semibold text-gray-700">{brand.name}</span>
               </div>
             ))}
           </motion.div>
