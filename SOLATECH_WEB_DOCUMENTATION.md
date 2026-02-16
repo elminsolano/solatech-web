@@ -69,14 +69,13 @@ solatech-web/
 - Grid de servicios destacados (Infraestructura, Ciberseguridad, Redes, Soporte)
 
 ### 3. Servicios
-7 tarjetas con los servicios:
+6 tarjetas con los servicios:
 1. Soporte Técnico
 2. Seguridad Informática
 3. Cableado Estructurado
 4. Desarrollo de Software
 5. Asesoría de TI
-6. Centrales Telefónicas (nuevo)
-7. Proyectos de TI
+6. Centrales Telefónicas
 
 Cada tarjeta incluye:
 - Icono representativo
@@ -85,13 +84,10 @@ Cada tarjeta incluye:
 - Botón "Cotizar este servicio"
 
 ### 4. Marcas
-Sección con logos de las marcas con las que trabajan:
+Sección con las marcas con las que trabajan:
 - Cisco, Grandstream, Panduit, TP-Link, Microsoft, Aruba, APC, HP, Dell, Fortinet, Hikvision, Dahua, Samsung
-- Grid responsive con logos de Clearbit API
-- Efecto grayscale que se muestra a color en hover
-- Título: "¿Por qué elegir Solatech Group?"
-- Descripción de la empresa
-- Valores: Transparencia, integridad y agilidad, Equipo técnico certificado, Compromiso con la excelencia
+- Grid responsive con tarjetas de texto
+- Efecto hover en naranja
 
 ### 5. FAQ (Preguntas Frecuentes)
 Sección desplegable con 6 preguntas frecuentes:
@@ -244,24 +240,19 @@ Ser reconocidos como una empresa con servicios de calidad e integridad. Ser perc
 
 **Última actualización**: Febrero 2026
 
+## Estado del Proyecto
+- ✅ **En Producción**: https://solatechgp.com
+- ✅ **Dominio configurado**: solatechgp.com + www.solatechgp.com
+- ✅ **SSL**: Certificado Let's Encrypt activo
+
+## Mejoras Implementadas
+
+### Seguridad
+- Headers de seguridad (CSP, X-Frame-Options, X-Content-Type-Options, etc.)
+- Límites de longitud en campos del formulario
+- Campo honeypot para prevenir spam
+- referrerPolicy en metadata
+
 ## Mejoras Pendientes
-- [ ] 7mo servicio: Proyectos de TI (falta en tarjetas)
+- [ ] Agregar 7mo servicio: Proyectos de TI
 - [ ] Sección de testimonios/clientes
-
-## Deployment (Producción)
-
-### Opciones de Hosting
-- **Vercel** (recomendado): Plan Hobby gratis, SSL automático, deploy desde Git
-- **Netlify**: Alternativa similar a Vercel
-- **Hosting tradicional**: Requiere Node.js
-
-### Pasos para Vercel
-1. Crear cuenta en vercel.com
-2. Importar proyecto desde GitHub
-3. Agregar dominio en Settings → Domains
-4. Configurar DNS en GoDaddy (CNAME o A record)
-5. SSL se configura automáticamente
-
-### Costo Vercel
-- **Hobby**: Gratis (suficiente para página corporativa)
-- **Pro**: $20/usuario/mes

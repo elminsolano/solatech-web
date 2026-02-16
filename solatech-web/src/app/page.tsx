@@ -27,9 +27,16 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormState("submitting");
     
     const form = e.currentTarget;
+    const honeypot = (form.elements.namedItem('website') as HTMLInputElement)?.value;
+    
+    if (honeypot) {
+      return;
+    }
+    
+    setFormState("submitting");
+    
     const formData = new FormData(form);
     
     try {
@@ -327,7 +334,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4"
           >
             {[
               { name: "Cisco", domain: "cisco.com" },
@@ -346,13 +353,9 @@ export default function Home() {
             ].map((brand, index) => (
               <div 
                 key={index}
-                className="flex flex-col items-center justify-center"
+                className="flex items-center justify-center px-4 py-3 bg-gray-50 rounded-lg hover:bg-[#ec682b]/10 hover:text-[#ec682b] transition-all duration-300 cursor-default"
               >
-                <img 
-                  src={`https://logo.clearbit.com/${brand.domain}`}
-                  alt={brand.name}
-                  className="w-16 h-16 md:w-20 md:h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                />
+                <span className="font-semibold text-gray-700">{brand.name}</span>
               </div>
             ))}
           </motion.div>
@@ -531,6 +534,7 @@ export default function Home() {
                         id="nombre"
                         name="nombre"
                         required
+                        maxLength={100}
                         disabled={formState === "submitting"}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                         placeholder="Tu nombre" 
@@ -542,6 +546,7 @@ export default function Home() {
                         type="text" 
                         id="empresa"
                         name="empresa"
+                        maxLength={100}
                         disabled={formState === "submitting"}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                         placeholder="Nombre de tu empresa" 
@@ -555,6 +560,7 @@ export default function Home() {
                       id="email"
                       name="email"
                       required
+                      maxLength={254}
                       disabled={formState === "submitting"}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                       placeholder="tu@email.com" 
@@ -566,9 +572,21 @@ export default function Home() {
                       type="tel" 
                       id="telefono"
                       name="telefono"
+                      maxLength={20}
                       disabled={formState === "submitting"}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                       placeholder="829-488-4326" 
+                    />
+                  </div>
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input 
+                      type="text" 
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="hidden" 
                     />
                   </div>
                   <div>
@@ -577,6 +595,7 @@ export default function Home() {
                       id="mensaje"
                       name="mensaje"
                       required
+                      maxLength={2000}
                       disabled={formState === "submitting"}
                       rows={4} 
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
