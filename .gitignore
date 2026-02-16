@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local folders to ignore
+"Solatech Info"
+SOLATECH_WEB_DOCUMENTATION.md
