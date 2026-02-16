@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   description: "Empresa líder en soluciones tecnológicas: soporte técnico, seguridad informática, desarrollo de software, infraestructura de redes y asesoría de TI para empresas en Santo Domingo.",
   keywords: "soporte técnico, seguridad informática, desarrollo de software, redes, TI, tecnología, Santo Domingo, República Dominicana",
   authors: [{ name: "Solatech Group" }],
+  referrerPolicy: "strict-origin-when-cross-origin",
   openGraph: {
     title: "Solatech Group | Soluciones Tecnológicas Integrales",
     description: "Servicios especializados en soporte técnico, seguridad, desarrollo de software e infraestructura tecnológica para empresas.",

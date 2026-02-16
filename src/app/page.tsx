@@ -27,6 +27,14 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    const form = e.currentTarget;
+    const honeypot = (form.elements.namedItem('website') as HTMLInputElement)?.value;
+    
+    if (honeypot) {
+      return;
+    }
+    
     setFormState("submitting");
     
     const form = e.currentTarget;
@@ -527,6 +535,7 @@ export default function Home() {
                         id="nombre"
                         name="nombre"
                         required
+                        maxLength={100}
                         disabled={formState === "submitting"}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                         placeholder="Tu nombre" 
@@ -538,6 +547,7 @@ export default function Home() {
                         type="text" 
                         id="empresa"
                         name="empresa"
+                        maxLength={100}
                         disabled={formState === "submitting"}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                         placeholder="Nombre de tu empresa" 
@@ -551,6 +561,7 @@ export default function Home() {
                       id="email"
                       name="email"
                       required
+                      maxLength={254}
                       disabled={formState === "submitting"}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                       placeholder="tu@email.com" 
@@ -562,9 +573,21 @@ export default function Home() {
                       type="tel" 
                       id="telefono"
                       name="telefono"
+                      maxLength={20}
                       disabled={formState === "submitting"}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
                       placeholder="829-488-4326" 
+                    />
+                  </div>
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input 
+                      type="text" 
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="hidden" 
                     />
                   </div>
                   <div>
@@ -573,6 +596,7 @@ export default function Home() {
                       id="mensaje"
                       name="mensaje"
                       required
+                      maxLength={2000}
                       disabled={formState === "submitting"}
                       rows={4} 
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#ec682b] focus:border-transparent disabled:opacity-50" 
